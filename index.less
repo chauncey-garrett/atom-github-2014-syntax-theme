@@ -1,221 +1,159 @@
-@import 'syntax-variables';
-
 .editor-colors {
-  background-color: @syntax-background-color;
-  color: @syntax-text-color;
+  background-color: #fff;
+  color: #333;
 }
 
 .editor {
-  .invisible-character {
-    color: @syntax-invisible-character-color;
-  }
-
-  .indent-guide {
-    color: @syntax-indent-guide-color;
-  }
-
-  .wrap-guide {
-    background-color: @syntax-wrap-guide-color;
+  .invisible-character, .wrap-guide, .indent-guide, .invisible {
+    color: rgba(85, 85, 85, 0.08);
   }
 
   .gutter {
-    color: @syntax-gutter-text-color;
-    background: @syntax-gutter-background-color;
+    color: #998;
+    background: #fff;
   }
 
   .gutter .line-number.folded,
   .gutter .line-number:after,
   .fold-marker:after {
-    color: #e87b00;
-  }
-
-  .invisible {
-    color: #555;
-  }
-
-  .selection .region {
-    background-color: #e1e1e1;
+    color: rgba(226, 67, 0, 0.41);
   }
 
   &.is-focused {
-    .cursor {
-      border-color: @syntax-cursor-color;
-    }
-
-    .selection .region {
-      background-color: @syntax-selection-color;
-    }
+    .selection .region { background-color: #afc4da; }
+    .cursor { border-color: #333; }
 
     .line-number.cursor-line-no-selection,
     .line.cursor-line {
-      background-color: @syntax-gutter-background-color-selected;
-    }
-  }
-
-  // Markdown
-  .source.gfm {
-    color: #444;
-  }
-
-  .gfm {
-    .markup.heading {
-      color: #111;
-    }
-
-    & .link {
-      color: #888;
-    }
-
-    .variable.list {
-      color: #888;
-    }
-  }
-
-  .markdown {
-    .paragraph {
-      color: #444;
-    }
-
-    .heading {
-      color: #111;
-    }
-
-    .link {
-      color: #888;
-
-      .string {
-        color: #888;
-      }
+      background-color: rgba(255, 255, 134, 0.34);
     }
   }
 }
 
 .comment {
-  color: #999988;
   font-style: italic;
+  color: #998;
+
+  &.yard {
+    color: #868578;
+  }
 }
 
 .string {
-  color: #D14;
-}
-
-// String interpolation in Ruby, CoffeeScript, and others
-.source .string {
-  .source,
-  .meta.embedded.line {
-    color: #5A5A5A;
+  .punctuation.section.embedded,
+  .punctuation.section.embedded .source, & {
+    color: #df5000;
   }
 
-  .punctuation.section.embedded {
-    color: #920B2D;
-
-    .source {
-      color: #920B2D;  // Required for the end of embedded strings in Ruby #716
-    }
+  .meta.embedded.line,
+  .source {
+    color: #333;
   }
 }
 
 .constant {
+  &.other.symbol,
   &.numeric {
-    color: #D14;
+    color: #945277;
   }
 
   &.language {
-    color: #606aa1;
+    color: #333;
+    font-weight: bold;
   }
 
   &.character,
   &.other {
-    color: #606aa1;
-  }
-
-  &.symbol {
-    color: #990073;
-  }
-
-  &.numeric.line-number.find-in-files .match {
-    color: rgba(143, 190, 0, 0.63);
+    color: #094e99;
   }
 }
 
 .variable {
   color: #008080;
-
-  &.parameter {
-    color: #606aa1;
+  &.parameter,
+  &.other.object > .punctuation {
+    color: #333;
   }
 }
 
-// Keywords
 .keyword {
-  color: #222;
-  font-weight: bold;
-
-  &.unit {
-    color: #445588;
+  &, &.special-method {
+    color: #333;
   }
 
-  &.special-method {
-    color: #0086B3;
+  &.unit {
+    color: #945277;
+    font-weight: bold;
+  }
+
+  &.control,
+  &.other {
+    font-weight: bold;
   }
 }
 
 .storage {
-  color: #222;
-
-  &.type {
-    color: #222;
+  &.modifier
+  &.type, & {
+    font-weight: bold;
   }
 }
 
 .entity {
-  &.name.class {
-    text-decoration: underline;
-    color: #606aa1;
+  &.name {
+    &.function {
+      font-weight: bold;
+      color: #945277;
+    }
+
+    &.class {
+      color: #458;
+      font-weight: bold;
+    }
   }
 
-  &.other.inherited-class {
-    text-decoration: underline;
-    color: #606aa1;
-  }
+  &.other {
+    &.attribute-name {
+      font-weight: bold;
+      color: #458;
+    }
 
-  &.name.function {
-    color: #900;
-  }
+    &.inherited-class {
+      font-weight: normal;
+      color: #094e99;
 
-  &.name.tag {
-    color: #008080;
-  }
-
-  &.other.attribute-name {
-    color: #458;
-    font-weight: bold;
-  }
-
-  &.name.filename.find-in-files {
-    color: #E6DB74;
+      .punctuation {
+        color: #333;
+      }
+    }
   }
 }
 
 .support {
+  &.function.builtin { font-weight: bold; }
+  &.class { color: #094e99; }
+
   &.constant,
   &.function,
   &.type {
-    color: #458;
+    color: #333;
   }
+}
 
-  &.class {
-    color: #008080;
+.markup {
+  &.deleted {
+    background-color: #fdd;
+    color: #faa;
   }
 }
 
 .invalid {
-  color: #F8F8F0;
-  background-color: #00A8C6;
+  background-color: #fdd;
+  color: #faa;
 
   &.deprecated {
-    color: #F8F8F0;
-    background-color: #8FBE00;
+    color: #fff3ac;
+    background-color: #fbf7cd;
   }
 }
 
@@ -223,11 +161,13 @@
 .meta {
   &.structure.dictionary.json > .string.quoted.double.json,
   &.structure.dictionary.json > .string.quoted.double.json .punctuation.string {
-    color: #000080;
+    color: #458;
   }
 
-  &.structure.dictionary.value.json > .string.quoted.double.json {
-    color: #d14;
+  &.structure.dictionary.value.json > .string.quoted.double.json,
+  &.structure.dictionary.value.json > .string.quoted.double.json
+      > .punctuation {
+    color: #df5000;
   }
 
   &.diff,
@@ -236,21 +176,39 @@
   }
 }
 
-// CSS Styles
-.css {
-  &.support.property-name {
+.css, .less, .scss {
+  &.keyword { font-weight: bold; }
+  &.support.property-name { color: #008080; }
+  &.constant { color: #099; }
+
+  // See github.com/atom/language-less/#10
+  // See github.com/atom/language-sass/#29
+
+  &.meta.selector {
+    color: #458;
     font-weight: bold;
-    color: #333;
   }
 
-  &.constant {
-    color: #099;
+  &.support.property-value,
+  &.constant.other.rgb-value,
+  &.constant.numeric {
+    color: #945277;
+  }
+
+  &.support.function {
+    color: #945277;
+    font-weight: bold;
   }
 }
 
+.js {
+  &.type.function {
+    font-weight: bold;
+  }
+}
 
 .bracket-matcher {
-  background-color: #C9C9C9;
-  opacity: .7;
   border-bottom: 0 none;
+  background-color: #c9c9c9;
+  opacity: 0.6;
 }

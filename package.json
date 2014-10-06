@@ -1,9 +1,9 @@
 {
-  "name": "atom-light-syntax",
+  "name": "github#2014",
   "theme": "syntax",
-  "version": "0.20.0",
-  "description": "Default light syntax theme",
-  "repository": "https://github.com/atom/atom-light-syntax",
+  "version": "0.1.0",
+  "description": "Github's 2014 Syntax Theme.",
+  "repository": "https://github.com/envygeeks/atom-github-2014-syntax-theme",
   "license": "MIT",
   "engines": {
     "atom": ">0.40.0"

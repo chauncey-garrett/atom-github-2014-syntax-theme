@@ -70,7 +70,10 @@
 
 .variable {
   color: #008080;
+
+  &.punctuation,
   &.parameter,
+  &.other.block,
   &.other.object > .punctuation {
     color: #333;
   }
@@ -209,6 +212,15 @@
 .js {
   &.type.function {
     font-weight: bold;
+  }
+}
+
+.ruby {
+  &.storage {
+    &.modifier
+    &.type, & {
+      color: #333;
+    }
   }
 }
 

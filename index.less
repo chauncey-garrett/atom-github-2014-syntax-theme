@@ -224,6 +224,30 @@
   }
 }
 
+.yaml {
+  .constant {
+    .entity {
+      color: #df5000;
+    }
+  }
+
+  .string {
+    .entry {
+      color: #df5000;
+    }
+
+    &.quoted, &.unquoted {
+      &, .punctuation.begin, .punctuation.end {
+        color: #945277;
+      }
+
+      .entity {
+        color: #df5000;
+      }
+    }
+  }
+}
+
 .bracket-matcher {
   border-bottom: 0 none;
   background-color: #c9c9c9;
